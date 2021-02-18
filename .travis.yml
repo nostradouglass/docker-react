@@ -1,5 +1,4 @@
 language: generic
-udo: required
 services: 
   - docker
   
