@@ -8,13 +8,21 @@ before_install:
 script:
   - docker run -e CI=true kellydouglass/docker-react npm run test -- --coverage
 
+
+  # This AWS instance will be deleted to avoid fees. 
+  # New one will need to be set up and settings changed to match new one.
+  # Access keys should still work. AWS wide, not instance.
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-1"
+
+  # These may need to change
+  region: "us-east-1" 
   app: "docker-react"
   env: "Dockerreact-env"
   bucket_name: "elasticbeanstalk-us-east-1-133828488501"
   bucket_path: "docker-react"
+  # Change above settings ^
+  
   on: 
     branch: main
   access_key_id: $AWS_ACCESS_KEY 
